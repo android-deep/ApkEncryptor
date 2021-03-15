@@ -49,9 +49,9 @@ android {
     signingConfigs {
         signConfig {
             storeFile file('E:\\MyData\\KeyStore\\beingyi.jks')
-            storePassword "zy3b9ac9ff"
-            keyAlias "beingyi"
-            keyPassword "zy3b9ac9ff"
+            storePassword ""
+            keyAlias ""
+            keyPassword ""
         }
     }
 
