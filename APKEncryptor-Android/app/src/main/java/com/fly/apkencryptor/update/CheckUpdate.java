@@ -8,8 +8,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.view.View;
 
 
@@ -198,7 +201,14 @@ public class CheckUpdate {
                 Manifest.permission.REQUEST_INSTALL_PACKAGES
         };
         ActivityCompat.requestPermissions((Activity) context, permissions, 1);
-
+        if (Build.VERSION.SDK_INT >= 30) {
+            // 先判断有没有权限
+            if (!Environment.isExternalStorageManager()) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
+                context.startActivity(intent);
+            }
+        }
 
     }
 

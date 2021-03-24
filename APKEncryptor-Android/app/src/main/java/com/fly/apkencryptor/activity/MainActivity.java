@@ -23,6 +23,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import androidx.annotation.NonNull;
@@ -498,6 +499,14 @@ public class MainActivity extends BaseActivity  implements ViewPager.OnPageChang
     //开始提交请求权限
     private void startRequestPermission() {
         ActivityCompat.requestPermissions((Activity) context, permissions, 321);
+        if (Build.VERSION.SDK_INT >= 30) {
+            // 先判断有没有权限
+            if (!Environment.isExternalStorageManager()) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
+                context.startActivity(intent);
+            }
+        }
     }
 
     String[] permissions = {

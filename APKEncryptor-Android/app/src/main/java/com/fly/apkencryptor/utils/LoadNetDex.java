@@ -151,8 +151,6 @@ public class LoadNetDex {
                     e.printStackTrace();
                 }
 
-
-
             }
         }.start();
 

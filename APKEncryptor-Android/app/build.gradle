@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     defaultConfig {
         applicationId "cn.beingyi.apkencryptor"
         minSdkVersion 17
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode Integer.parseInt(getProperty("version.properties","versionCode",false))
         versionName "2.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -26,7 +26,7 @@ android {
 
             manifestPlaceholders = [FILE_PROVIDER: "com.fly.apkencryptor.fileProvider"]
             minSdkVersion 17
-            targetSdkVersion 28
+            targetSdkVersion 30
             versionCode Integer.parseInt(getProperty("version.properties","versionCode",false))
             versionName '2.3'
         }
@@ -68,6 +68,9 @@ android {
         ndkBuild {
             path file('src/main/jni/Android.mk')
         }
+//        cmake{
+//            path 'src/main/jni/CMakeList.txt'
+//        }
     }
 
 
@@ -77,6 +80,7 @@ android {
                 main {
                     res.srcDirs = ['src/main/res']
                     jniLibs.srcDirs = ['src/main/jni']
+//                    jniLibs.srcDirs = ['src/main/jniLibs']
                     java.srcDirs = ['src/main/java']
                     assets.srcDirs = ['src/main/assets_en']
                 }
@@ -160,9 +164,9 @@ def buildTime() {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
-    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'com.yanzhenjie.permission:x:2.0.1'
     implementation 'org.xutils:xutils:3.5.0'
@@ -171,7 +175,6 @@ dependencies {
 
 
 }
-
 
 
 

@@ -255,7 +255,6 @@ public class Conf {
 
     public void checkPermission(){
 
-
         String[] Permissions = {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.INTERNET,
@@ -286,14 +285,9 @@ public class Conf {
                         }
                     }
                 }
-                )
-                .start();
-
+                ).start();
 
     }
-
-
-
 
 
     public void checkProxy(){
